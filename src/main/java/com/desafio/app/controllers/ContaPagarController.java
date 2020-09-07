@@ -31,8 +31,8 @@ public class ContaPagarController {
             @ApiResponse(code = 422, message = "Retorno de Bad Request caso algo estiver errado com a requisição")
     })
     @PostMapping
-    public ResponseEntity<String> inserir(@RequestBody @Valid ContaPagarInsertDTO dto) {
-        Long id = service.inserir(dto);
+    public ResponseEntity<String> inserir(@RequestBody @Valid ContaPagarInsertDTO contaPagarInsert) {
+        Long id = service.inserir(contaPagarInsert);
 
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
@@ -47,22 +47,22 @@ public class ContaPagarController {
     @ApiResponses({
             @ApiResponse(code = 200, message = "Retorna de sucesso padrão"),
             @ApiResponse(code = 404, message = "Retorno de Not Founde caso algum dado informado não for encontrado"),
-            @ApiResponse(code = 422, message = "Retorno de Bad Request caso algo estiver errado com a requisição")
+            @ApiResponse(code = 422, message = "Retorno de Unprocessable Entity caso algo estiver errado com o objeto da requisição")
     })
     @GetMapping("/{id}")
     public ResponseEntity<ContaPagarDTO> buscarPeloId(@PathVariable Long id) {
-        ContaPagarDTO dto = service.buscarPeloId(id);
-        return ResponseEntity.ok().body(dto);
+        ContaPagarDTO conta = service.buscarPeloId(id);
+        return ResponseEntity.ok().body(conta);
     }
 
     @ApiOperation(value = "Serviço Responsável por listar as Contas a pagar")
     @ApiResponses({
             @ApiResponse(code = 200, message = "Retorna de sucesso padrão"),
-            @ApiResponse(code = 404, message = "Retorno de Not Founde caso algum dado informado não for encontrado"),
-            @ApiResponse(code = 422, message = "Retorno de Bad Request caso algo estiver errado com a requisição")
+            @ApiResponse(code = 404, message = "Retorno de Not Founde caso algum dado informado não for encontrado")
     })
     @GetMapping()
     public ResponseEntity<List<ContaPagarDTO>> buscarTodos() {
-        return ResponseEntity.ok().body(service.buscarTodos());
+        List<ContaPagarDTO> contas = service.buscarTodos();
+        return ResponseEntity.ok().body(contas);
     }
 }
