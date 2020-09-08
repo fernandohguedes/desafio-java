@@ -1,15 +1,17 @@
 
-# desafio-java
+# Desafio JAVA
 
-- Padrão DTO para transferância de dados;
+- Springboot framework 2.3.3.RELEASE;
+
+- Padrão DTO para transferância de dados:
+    - Request;
+    - Response;
 
 - Java Versão 8;
 
-- Springboot framework;
-
 - JPA;
 
-- banco de teste H2;
+- Banco de testes H2;
 
 - Documentação do serviço com Swagger;
 

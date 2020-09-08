@@ -8,19 +8,21 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@SequenceGenerator(name = "CONTA_SEQUENCE")
+@Table(name = "CONTA_PAGAR")
 public class ContaPagar implements Serializable {
 
     private static final long serialVersionUID = -3516598427487444860L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "CONTA_SEQUENCE", strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Long id;
 
@@ -30,16 +32,16 @@ public class ContaPagar implements Serializable {
     @Column(name = "VALOR_ORIGINAL", nullable = false)
     private BigDecimal valorOriginal;
 
-    @Column(name = "VALOR_CORRIGIDO", nullable = false)
+    @Column(name = "VALOR_CORRIGIDO")
     private BigDecimal valorCorrigido;
 
     @Column(name = "DATA_VENCIMENTO", nullable = false)
-    private Date dataVencimento;
+    private LocalDate dataVencimento;
 
     @Column(name = "DATA_PAGAMENTO", nullable = false)
-    private Date dataPagamento;
+    private LocalDate dataPagamento;
 
-    @Column(name = "DIAS_ATRASO", nullable = false)
+    @Column(name = "DIAS_ATRASO")
     private Integer diasAtraso;
 
 }

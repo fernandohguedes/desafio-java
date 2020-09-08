@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.time.Instant;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
@@ -22,16 +24,29 @@ public class ContaPagarService {
 
     public Long inserir(ContaPagarInsertDTO dto) {
         ContaPagar contaPagar = new ContaPagar();
+
         contaPagar.setNome(dto.getNome());
         contaPagar.setValorOriginal(dto.getValorOriginal());
-        contaPagar.setDataPagamento(Date.from(dto.getDataPagamento().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()));
-        contaPagar.setDataVencimento(Date.from(dto.getDataPagamento().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()));
-        contaPagar.setDiasAtraso(1);
-        contaPagar.setValorCorrigido(new BigDecimal(100.0));
+        contaPagar.setDataPagamento(dto.getDataPagamento());
+        contaPagar.setDataVencimento(dto.getDataPagamento());
+
+        // verifica o vencimento
+        boolean vencido = dto.getDataPagamento().isAfter(dto.getDataVencimento());
+
+        if (vencido) {
+
+        }
+
         contaPagar = repository.save(contaPagar);
 
         return contaPagar.getId();
     }
+
+
+
+
+
+
 
     public ContaPagarDTO buscarPeloId(Long id) {
         ContaPagar contaPagar = repository.findById(id).orElseThrow(() -> new RuntimeException());
