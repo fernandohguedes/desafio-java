@@ -3,14 +3,14 @@ package com.desafio.app.service;
 import com.desafio.app.domain.dtos.ContaPagarDTO;
 import com.desafio.app.domain.dtos.ContaPagarInsertDTO;
 import com.desafio.app.domain.entities.ContaPagar;
+import com.desafio.app.domain.entities.FatorCalculo;
 import com.desafio.app.repositories.ContaPagarRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.time.Instant;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
@@ -22,6 +22,9 @@ public class ContaPagarService {
     @Autowired
     private ContaPagarRepository repository;
 
+    @Autowired
+    private FatorCalculoService fatorCalculoService;
+
     public Long inserir(ContaPagarInsertDTO dto) {
         ContaPagar contaPagar = new ContaPagar();
 
@@ -30,23 +33,40 @@ public class ContaPagarService {
         contaPagar.setDataPagamento(dto.getDataPagamento());
         contaPagar.setDataVencimento(dto.getDataPagamento());
 
-        // verifica o vencimento
         boolean vencido = dto.getDataPagamento().isAfter(dto.getDataVencimento());
 
         if (vencido) {
-
+            contaPagar = calculaValor(dto, contaPagar);
         }
 
         contaPagar = repository.save(contaPagar);
-
         return contaPagar.getId();
     }
 
+    public ContaPagar calculaValor(ContaPagarInsertDTO dto, ContaPagar contaPagar) {
+        Integer diasAtraso = calculaDiasAtraso(dto.getDataVencimento(), dto.getDataPagamento());
+        FatorCalculo fator = fatorCalculoService.consultaFator(diasAtraso);
+        contaPagar = calculaCorrecaoValor(fator, diasAtraso, contaPagar);
+        return contaPagar;
+    }
 
+    public Integer calculaDiasAtraso(LocalDate dataVencimento, LocalDate dataPagamento) {
+        Date vencimento = Date.from(dataVencimento.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+        Date pagamento = Date.from(dataPagamento.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+        Long diasAtraso = (pagamento.getTime() - vencimento.getTime()) / (1000 * 60 * 60 * 24);
+        return Integer.valueOf(diasAtraso.toString());
+    }
 
+    public ContaPagar calculaCorrecaoValor(FatorCalculo fator, Integer diasAtraso, ContaPagar contaPagar) {
+        BigDecimal valorMulta = contaPagar.getValorOriginal().multiply(fator.getMulta()).divide(new BigDecimal(100));
+        BigDecimal valorJuros = fator.getJurosDiaAtraso().multiply(new BigDecimal(diasAtraso));
+        BigDecimal valorCorrigido = valorMulta.add(valorJuros).add(contaPagar.getValorOriginal());
 
+        contaPagar.setValorCorrigido(valorCorrigido);
+        contaPagar.setDiasAtraso(diasAtraso);
 
-
+        return contaPagar;
+    }
 
     public ContaPagarDTO buscarPeloId(Long id) {
         ContaPagar contaPagar = repository.findById(id).orElseThrow(() -> new RuntimeException());

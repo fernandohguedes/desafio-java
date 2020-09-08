@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Data
 @Builder
@@ -26,9 +27,9 @@ public class FatorCalculo implements Serializable {
     private Integer diasAtraso;
 
     @Column(name = "MULTA")
-    private Double multa;
+    private BigDecimal multa;
 
     @Column(name = "JUROS_DIA_ATRASO")
-    private Double jurosDiaAtraso;
+    private BigDecimal jurosDiaAtraso;
 
 }

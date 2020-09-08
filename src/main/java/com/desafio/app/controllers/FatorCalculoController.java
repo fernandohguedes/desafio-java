@@ -1,21 +1,8 @@
 package com.desafio.app.controllers;
 
-import com.desafio.app.domain.dtos.ContaPagarDTO;
-import com.desafio.app.domain.dtos.ContaPagarInsertDTO;
-import com.desafio.app.service.ContaPagarService;
-import com.desafio.app.service.FatorCalculoService;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
-import javax.validation.Valid;
-import java.net.URI;
-import java.util.List;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/fator-calculo")

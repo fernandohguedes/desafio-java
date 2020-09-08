@@ -1,5 +1,6 @@
 package com.desafio.app.domain.dtos;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -10,12 +11,12 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @ApiModel(value = "ContaPagar", description = "Objeto Responsável por armazenar informações de conta a pagar")
 public class ContaPagarDTO implements Serializable {
 
