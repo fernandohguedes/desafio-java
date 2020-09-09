@@ -18,7 +18,7 @@ import java.math.BigDecimal;
 public class FatorCalculo implements Serializable {
 
     @Id
-    @SequenceGenerator(name = "FATOR_CALCULO_SEQUENCE", sequenceName = "CONTA_SEQUENCE",  initialValue = 1, allocationSize = 1)
+    @SequenceGenerator(name = "FATOR_CALCULO_SEQUENCE", sequenceName = "FATOR_CALCULO_SEQUENCE",  initialValue = 1, allocationSize = 1)
     @GeneratedValue(generator = "FATOR_CALCULO_SEQUENCE", strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Long id;
