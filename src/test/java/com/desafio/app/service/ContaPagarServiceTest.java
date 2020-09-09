@@ -2,11 +2,13 @@ package com.desafio.app.service;
 
 import com.desafio.app.repositories.ContaPagarRepository;
 import org.assertj.core.api.ErrorCollector;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.Silent.class)
@@ -20,6 +22,11 @@ class ContaPagarServiceTest {
 
     @Mock
     private ContaPagarRepository repository;
+
+    @Before
+    public void init() {
+        MockitoAnnotations.initMocks(this);
+    }
 
     @Test
     void inserir() {
