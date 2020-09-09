@@ -26,9 +26,7 @@ public class ContaPagarController {
 
     @ApiOperation(value = "Serviço Responsável por inserir a Dados de uma Conta a pagar")
     @ApiResponses({
-            @ApiResponse(code = 201, message = "Retorna de sucesso padrão"),
-            @ApiResponse(code = 404, message = "Retorno de Not Founde caso algum dado informado não for encontrado"),
-            @ApiResponse(code = 422, message = "Retorno de Bad Request caso algo estiver errado com a requisição")
+            @ApiResponse(code = 201, message = "Retorna de sucesso padrão")
     })
     @PostMapping
     public ResponseEntity<String> inserir(@RequestBody @Valid ContaPagarInsertDTO contaPagarInsert) {
@@ -43,11 +41,10 @@ public class ContaPagarController {
         return ResponseEntity.created(location).build();
     }
 
-    @ApiOperation(value = "Serviço Responsável por a Dados de uma Conta a pagar")
+    @ApiOperation(value = "Serviço Responsável por buscar conta pelo ID")
     @ApiResponses({
             @ApiResponse(code = 200, message = "Retorna de sucesso padrão"),
-            @ApiResponse(code = 404, message = "Retorno de Not Founde caso algum dado informado não for encontrado"),
-            @ApiResponse(code = 422, message = "Retorno de Unprocessable Entity caso algo estiver errado com o objeto da requisição")
+            @ApiResponse(code = 404, message = "Retorno de Not Founde caso algum dado informado não for encontrado")
     })
     @GetMapping("/{id}")
     public ResponseEntity<ContaPagarDTO> buscarPeloId(@PathVariable Long id) {

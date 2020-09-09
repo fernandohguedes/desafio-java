@@ -30,7 +30,8 @@ public class SwaggerConfig {
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(apiInfoBookStore())
-                .tags(new Tag("Conta Pagar", "Serviços para contas a pagar"));
+                .tags(new Tag("Conta Pagar", "Serviços para contas a pagar"),
+                      new Tag("Fator Calculo", "Serviços para Fatores de Calculo"));
     }
 
     private ApiInfo apiInfoBookStore() {

@@ -14,11 +14,11 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@SequenceGenerator(name = "FATOR_CALCULO_SEQUENCE")
 @Table(name = "FATOR_CALCULO")
 public class FatorCalculo implements Serializable {
 
     @Id
+    @SequenceGenerator(name = "FATOR_CALCULO_SEQUENCE", sequenceName = "CONTA_SEQUENCE",  initialValue = 1, allocationSize = 1)
     @GeneratedValue(generator = "FATOR_CALCULO_SEQUENCE", strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Long id;

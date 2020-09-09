@@ -15,13 +15,13 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@SequenceGenerator(name = "CONTA_SEQUENCE")
 @Table(name = "CONTA_PAGAR")
 public class ContaPagar implements Serializable {
 
     private static final long serialVersionUID = -3516598427487444860L;
 
     @Id
+    @SequenceGenerator(name = "CONTA_SEQUENCE", sequenceName = "CONTA_SEQUENCE",  initialValue = 1, allocationSize = 1)
     @GeneratedValue(generator = "CONTA_SEQUENCE", strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Long id;
@@ -43,5 +43,9 @@ public class ContaPagar implements Serializable {
 
     @Column(name = "DIAS_ATRASO")
     private Integer diasAtraso;
+
+    @OneToOne
+    @JoinColumn(name = "ID_FATOR_CALCULO")
+    private FatorCalculo fatorCalculo;
 
 }

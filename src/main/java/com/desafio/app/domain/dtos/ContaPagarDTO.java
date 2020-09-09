@@ -1,5 +1,6 @@
 package com.desafio.app.domain.dtos;
 
+import com.desafio.app.domain.entities.FatorCalculo;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -42,5 +43,8 @@ public class ContaPagarDTO implements Serializable {
 
     @ApiModelProperty(value = "dias em atraso da conta", example = "3")
     private Integer diasAtraso;
+
+    @ApiModelProperty(value = "Fator de Calculo para contas vencidas")
+    private FatorCalculo fatorCalculo;
 
 }
