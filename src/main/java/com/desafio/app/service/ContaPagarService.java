@@ -53,10 +53,10 @@ public class ContaPagarService {
     public Integer calculaDiasAtraso(LocalDate dataVencimento, LocalDate dataPagamento) {
         Date vencimento = Date.from(dataVencimento.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
         Date pagamento = Date.from(dataPagamento.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
-        return converteMillessegundoParaDias(vencimento, pagamento);
+        return converteMillissegundoParaDias(vencimento, pagamento);
     }
 
-    public Integer converteMillessegundoParaDias(Date vencimento, Date pagamento) {
+    public Integer converteMillissegundoParaDias(Date vencimento, Date pagamento) {
         Long diasAtraso = (pagamento.getTime() - vencimento.getTime()) / (1000 * 60 * 60 * 24);
         return Integer.valueOf(diasAtraso.toString());
     }
