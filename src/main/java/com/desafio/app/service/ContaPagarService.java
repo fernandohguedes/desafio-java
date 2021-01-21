@@ -23,7 +23,8 @@ public class ContaPagarService {
     @Autowired
     private ContaPagarRepository repository;
 
-c
+    @Autowired
+    private FatorCalculoService fatorCalculoService;
 
     public Long inserir(ContaPagarInsertDTO dto) {
         ContaPagar contaPagar = new ContaPagar();
