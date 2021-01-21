@@ -1,9 +1,7 @@
 package com.desafio.app.service;
 
-import com.desafio.app.domain.dtos.ContaPagarDTO;
 import com.desafio.app.domain.dtos.FatorCalculoDTO;
 import com.desafio.app.domain.dtos.FatorCalculoInsertDTO;
-import com.desafio.app.domain.entities.ContaPagar;
 import com.desafio.app.domain.entities.FatorCalculo;
 import com.desafio.app.errors.exceptions.ObjectNotFoundException;
 import com.desafio.app.repositories.FatorCalculoRepository;

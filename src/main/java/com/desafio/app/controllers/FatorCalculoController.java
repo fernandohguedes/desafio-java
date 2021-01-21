@@ -1,6 +1,5 @@
 package com.desafio.app.controllers;
 
-import com.desafio.app.domain.dtos.ContaPagarInsertDTO;
 import com.desafio.app.domain.dtos.FatorCalculoDTO;
 import com.desafio.app.domain.dtos.FatorCalculoInsertDTO;
 import com.desafio.app.service.FatorCalculoService;
