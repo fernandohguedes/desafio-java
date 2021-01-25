@@ -1,6 +1,8 @@
 
 # Desafio JAVA
 
+[![codecov](https://codecov.io/gh/fernandohguedes/desafio-java/branch/master/graph/badge.svg?token=QYRKYGH9YZ)](https://codecov.io/gh/fernandohguedes/desafio-java)
+
 - Springboot framework 2.3.3.RELEASE;
 
 - Padrão DTO para transferância de dados:
