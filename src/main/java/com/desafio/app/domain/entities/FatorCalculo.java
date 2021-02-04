@@ -20,7 +20,8 @@ public class FatorCalculo implements Serializable {
     private static final long serialVersionUID = 3458028187016397558L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "SEQ_FATOR_CALCULO", sequenceName = "SEQ_FATOR_CALCULO",  initialValue = 1, allocationSize = 1)
+    @GeneratedValue(generator = "SEQ_FATOR_CALCULO", strategy = GenerationType.SEQUENCE)
     @Column(name = "ID")
     private Long id;
 
