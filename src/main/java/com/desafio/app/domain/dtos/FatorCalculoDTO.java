@@ -17,6 +17,7 @@ import java.math.BigDecimal;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @ApiModel(value = "FatorCalculo", description = "Objeto Responsável por armazenar informações do fator de Calculo")
 public class FatorCalculoDTO implements Serializable {
+
     private static final long serialVersionUID = -1199896766612858433L;
 
     private Long id;

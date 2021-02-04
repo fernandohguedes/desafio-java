@@ -17,6 +17,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @ApiModel(value = "FatorCalculoInsert", description = "Objeto Responsável por armazenar informações sobre fator de Calculo")
 public class FatorCalculoInsertDTO implements Serializable {
+
     private static final long serialVersionUID = 8754877901345490993L;
 
     @NotNull

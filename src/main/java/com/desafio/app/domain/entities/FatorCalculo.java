@@ -17,9 +17,10 @@ import java.math.BigDecimal;
 @Table(name = "FATOR_CALCULO")
 public class FatorCalculo implements Serializable {
 
+    private static final long serialVersionUID = 3458028187016397558L;
+
     @Id
-    @SequenceGenerator(name = "FATOR_CALCULO_SEQUENCE", sequenceName = "FATOR_CALCULO_SEQUENCE",  initialValue = 1, allocationSize = 1)
-    @GeneratedValue(generator = "FATOR_CALCULO_SEQUENCE", strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Long id;
 

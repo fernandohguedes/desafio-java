@@ -21,8 +21,7 @@ public class ContaPagar implements Serializable {
     private static final long serialVersionUID = -3516598427487444860L;
 
     @Id
-    @SequenceGenerator(name = "CONTA_SEQUENCE", sequenceName = "CONTA_SEQUENCE",  initialValue = 1, allocationSize = 1)
-    @GeneratedValue(generator = "CONTA_SEQUENCE", strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Long id;
 
