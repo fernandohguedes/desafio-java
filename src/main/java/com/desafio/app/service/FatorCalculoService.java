@@ -30,7 +30,9 @@ public class FatorCalculoService {
     }
 
     public FatorCalculoDTO buscarPeloId(Long id) {
-        FatorCalculo fatorCalculo = repository.findById(id).orElseThrow(() -> new ObjectNotFoundException(ObjectNotFoundException.FATOR_CALCULO_NAO_ENCONTRADO));
+        FatorCalculo fatorCalculo = repository.findById(id)
+                .orElseThrow(() -> new ObjectNotFoundException(ObjectNotFoundException.FATOR_CALCULO_NAO_ENCONTRADO));
+
         return new ModelMapper().map(fatorCalculo, FatorCalculoDTO.class);
     }
 
