@@ -21,7 +21,7 @@
 
 - Testes Unitários:
 
-    - Junit;
-    - Versão: 4.12;
+    - Junit 5.5.2;
+    - Mockito 2.23.0; 
 
 

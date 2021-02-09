@@ -2,16 +2,12 @@ package com.desafio.app.service;
 
 import com.desafio.app.repositories.FatorCalculoRepository;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.ArgumentCaptor;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
+@ExtendWith(MockitoExtension.class)
 class FatorCalculoServiceTest {
 
 	@InjectMocks
@@ -20,58 +16,8 @@ class FatorCalculoServiceTest {
 	@Mock
 	private FatorCalculoRepository repository;
 
-//	@Captor
-//	private ArgumentCaptor<Definir> captor;
-
 	@Test
-	void buscarFatorCalculo() {
-		// Arrange
-		when(null);
+	public void buscarPeloId() {
 
-		// Act
-
-		// Asser
-		assertNotNull(anyString());
-		assertEquals(true, true);
-		verify(null);
-	}
-
-	@Test
-	void inserir() {
-		// Arrange
-		when(null);
-
-		// Act
-
-		// Asser
-		assertNotNull(anyString());
-		assertEquals(true, true);
-		verify(null);
-	}
-
-	@Test
-	void buscarPeloId() {
-		// Arrange
-		when(null);
-
-		// Act
-
-		// Asser
-		assertNotNull(anyString());
-		assertEquals(true, true);
-		verify(null);
-	}
-
-	@Test
-	void buscarTodos() {
-		// Arrange
-		when(null);
-
-		// Act
-
-		// Asser
-		assertNotNull(anyString());
-		assertEquals(true, true);
-		verify(null);
 	}
 }
